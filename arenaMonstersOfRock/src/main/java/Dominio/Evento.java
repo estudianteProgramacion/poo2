@@ -112,10 +112,10 @@ public abstract class Evento {
 	public List<Presentacion> getPresentaciones() {
 		return presentaciones;
 	}
-	public Set<Banda> getBandas(){
+	public List<Banda> getBandas(){
 		return this.getPresentaciones().stream()
 			   .map(p -> p.getBanda())
-			   .collect(Collectors.toSet());
+			   .collect(Collectors.toList());
 	}
 
 	protected boolean hayPresentaciones() {

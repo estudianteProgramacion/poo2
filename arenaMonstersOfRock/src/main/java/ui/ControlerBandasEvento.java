@@ -1,5 +1,6 @@
 package ui;
 
+import Dominio.Banda;
 import Dominio.Evento;
 
 public class ControlerBandasEvento {
@@ -32,6 +33,10 @@ public class ControlerBandasEvento {
 
 	public void setNroBandaActual(int nroBandaActual) {
 		this.nroBandaActual = nroBandaActual;
+	}
+
+	public Banda getBandaActual() {
+		return this.getEvento().getBandas().get(this.getNroBandaActual());
 	}
 
 

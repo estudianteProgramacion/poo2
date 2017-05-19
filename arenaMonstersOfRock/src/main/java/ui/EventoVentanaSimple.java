@@ -3,6 +3,7 @@ package ui;
 import org.uqbar.arena.bindings.ObservableProperty;
 import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.layout.HorizontalLayout;
+import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.NumericField;
 import org.uqbar.arena.widgets.Panel;
@@ -84,6 +85,9 @@ public class EventoVentanaSimple extends MainWindow<Evento> {
 		NumericField nroPres = new NumericField(botones);
 		nroPres.bindValueToProperty("nroBandaActual");
 		
+		new Button(botones)
+			.setCaption("ver")
+			.onClick(() -> new BandaVentanaSimplePopUp(this, controlerBandas.getBandaActual()).open() );
 	}
 
 }
