@@ -87,7 +87,21 @@ public class EventoVentanaSimple extends MainWindow<Evento> {
 		
 		new Button(botones)
 			.setCaption("ver")
-			.onClick(() -> new BandaVentanaSimplePopUp(this, controlerBandas.getBandaActual()).open() );
+			.onClick(() -> {
+				if (controlerBandas.esNumeroValido()){
+					controlerBandas.textoPorDefecto();
+					new BandaVentanaSimplePopUp(this, controlerBandas.getBandaActual()).open();
+				} else {
+					controlerBandas.setText(
+							"elija valores entre 1 y " 
+							+ this.getModelObject().getBandas().size()		
+					);
+				}
+			});
+		
+		
+		Label visor = new Label(botones);
+		visor.bindValueToProperty("text");
 	}
 
 }

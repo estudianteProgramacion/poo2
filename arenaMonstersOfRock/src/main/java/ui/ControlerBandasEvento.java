@@ -1,13 +1,17 @@
 package ui;
 
+import org.uqbar.commons.utils.Observable;
+
 import Dominio.Banda;
 import Dominio.Evento;
 
+@Observable
 public class ControlerBandasEvento {
 
 	//Variables
 	private Evento evento;
-	private int nroBandaActual = 0;
+	private int nroBandaActual = 1;
+	private String text;
 	
 	//Constructores
 	public ControlerBandasEvento (Evento e){
@@ -17,6 +21,18 @@ public class ControlerBandasEvento {
 
 	//Methods
 	
+	public boolean esNumeroValido() {
+		return this.getNroBandaActual() > 0 
+				&& this.getEvento().getBandas().size() >= this.getNroBandaActual();
+	}
+
+	public Banda getBandaActual() {
+		return this.getEvento().getBandas().get(this.getNroBandaActual() - 1);
+	}
+	
+	public void textoPorDefecto() {
+		this.setText("");
+	}
 	
 	//Setters y getters
 	public Evento getEvento() {
@@ -35,9 +51,16 @@ public class ControlerBandasEvento {
 		this.nroBandaActual = nroBandaActual;
 	}
 
-	public Banda getBandaActual() {
-		return this.getEvento().getBandas().get(this.getNroBandaActual());
+	public void setText(String text ) {
+		this.text = text;
 	}
+	public String getText(){
+		return this.text;
+	}
+
+
+
+
 
 
 }
