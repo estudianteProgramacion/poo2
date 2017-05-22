@@ -1,6 +1,7 @@
 package ui;
 
-import org.uqbar.arena.bindings.ObservableProperty;
+import java.awt.Color;
+
 import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.layout.HorizontalLayout;
 import org.uqbar.arena.widgets.Button;
@@ -26,35 +27,37 @@ public class EventoVentanaSimple extends MainWindow<Evento> {
 
 	@Override
 	public void createContents(Panel mainPanel) {
-		this.setTitle("Evento_Simple");
-		//mainPanel.setWidth(400);
+		this.setTitle("Evento");
 		
 		Panel descEvento = new Panel(mainPanel);
 		
 		descEvento.setLayout(new ColumnLayout(2));
 		
-		new Label(descEvento).setText("Nombre:");
-		new Label(descEvento).bindValueToProperty("nombre");
+		Color colorTexto1 = new Color(0,76,156);
+		Color colorTexto2 = new Color(153,153,0);
 		
-		new Label(descEvento).setText("Pais:");
-		new Label(descEvento).bindValueToProperty("paisDeEvento.name");
+		new Label(descEvento).setText("Nombre:").setFontSize(12).setForeground(colorTexto1);
+		new Label(descEvento).setFontSize(13).setForeground(colorTexto2).bindValueToProperty("nombre");
 		
-		new Label(descEvento).setText("Ingreso Asegurado:");
-		new Label(descEvento).bindValueToProperty("ingresoAsegurado");
+		new Label(descEvento).setText("Pais:").setFontSize(12).setForeground(colorTexto1);
+		new Label(descEvento).setFontSize(12).setForeground(colorTexto2).bindValueToProperty("paisDeEvento.name");
 		
-		new Label(descEvento).setText("Gastos basicos:");
-		new Label(descEvento).bindValueToProperty("gastos");
-			//setText(Double.toString(this.getModelObject().getGastos()));
+		new Label(descEvento).setText("Ingreso Asegurado:").setFontSize(12).setForeground(colorTexto1);
+		new Label(descEvento).setFontSize(12).setForeground(colorTexto2).bindValueToProperty("ingresoAsegurado");
 		
-		new Label(descEvento).setText("Duracion:");
-		new Label(descEvento).bindValueToProperty("tiempoTotalPresentaciones");
-			//setText(Double.toString(this.getModelObject().getTiempoTotalPresentaciones()));
+		new Label(descEvento).setText("Gastos basicos:").setFontSize(12).setForeground(colorTexto1);
+		new Label(descEvento).setFontSize(12).setForeground(colorTexto2).bindValueToProperty("gastos");
 		
+		new Label(descEvento).setText("Duracion:").setFontSize(12).setForeground(colorTexto1);
+		new Label(descEvento).setFontSize(13).setForeground(colorTexto2).bindValueToProperty("tiempoTotalPresentaciones");
 		
 		Table<Presentacion> bandas = new Table<>(mainPanel, Presentacion.class);
 		bandas.bindItemsToProperty("presentaciones");
 		
+		bandas.setNumberVisibleRows(6);
+		
 		new Column<>(bandas)
+			.setForeground(Color.darkGray)
 			.setTitle("Banda")
 			.bindContentsToProperty("banda.nombre");
 		
