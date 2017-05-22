@@ -33,7 +33,6 @@ public class BandaVentanaSimplePopUp extends Window<Banda> {
 		
 		new Label(detalles).setText("Nombre");
 		new Label(detalles).bindValueToProperty("nombre");
-		//setText(this.getModelObject().getNombre());
 	
 		new Label(detalles).setText("País");
 		new Label(detalles).bindValueToProperty("pais.name");

@@ -58,9 +58,4 @@ public class ControlerBandasEvento {
 		return this.text;
 	}
 
-
-
-
-
-
 }

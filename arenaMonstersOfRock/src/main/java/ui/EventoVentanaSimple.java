@@ -1,6 +1,5 @@
 package ui;
 
-import org.uqbar.arena.bindings.ObservableProperty;
 import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.layout.HorizontalLayout;
 import org.uqbar.arena.widgets.Button;
@@ -28,6 +27,8 @@ public class EventoVentanaSimple extends MainWindow<Evento> {
 	public void createContents(Panel mainPanel) {
 		this.setTitle("Evento_Simple");
 		//mainPanel.setWidth(400);
+		
+		this.setIconImage("icon");
 		
 		Panel descEvento = new Panel(mainPanel);
 		
@@ -80,7 +81,7 @@ public class EventoVentanaSimple extends MainWindow<Evento> {
 		Panel botones = new Panel(mainPanel,controlerBandas);
 		botones.setLayout(new HorizontalLayout());
 		
-		new Label(botones).setText("Nro. Banda");
+		new Label(botones).setText("Nro. Fila Banda");
 
 		NumericField nroPres = new NumericField(botones);
 		nroPres.bindValueToProperty("nroBandaActual");
