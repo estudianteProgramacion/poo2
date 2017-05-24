@@ -1,7 +1,10 @@
 package ui;
 
+<<<<<<< HEAD
 import java.awt.Color;
 
+=======
+>>>>>>> branch 'master' of https://github.com/estudianteProgramacion/poo2
 import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.layout.HorizontalLayout;
 import org.uqbar.arena.widgets.Button;
@@ -27,7 +30,14 @@ public class EventoVentanaSimple extends MainWindow<Evento> {
 
 	@Override
 	public void createContents(Panel mainPanel) {
+<<<<<<< HEAD
 		this.setTitle("Evento");
+=======
+		this.setTitle("Evento_Simple");
+		//mainPanel.setWidth(400);
+		
+		this.setIconImage("icon");
+>>>>>>> branch 'master' of https://github.com/estudianteProgramacion/poo2
 		
 		Panel descEvento = new Panel(mainPanel);
 		
@@ -83,7 +93,7 @@ public class EventoVentanaSimple extends MainWindow<Evento> {
 		Panel botones = new Panel(mainPanel,controlerBandas);
 		botones.setLayout(new HorizontalLayout());
 		
-		new Label(botones).setText("Nro. Banda");
+		new Label(botones).setText("Nro. Fila Banda");
 
 		NumericField nroPres = new NumericField(botones);
 		nroPres.bindValueToProperty("nroBandaActual");
