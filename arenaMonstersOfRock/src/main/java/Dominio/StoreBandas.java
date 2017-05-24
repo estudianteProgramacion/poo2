@@ -1,4 +1,4 @@
-package Test;
+package Dominio;
 
 public class StoreBandas {
 
