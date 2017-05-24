@@ -32,7 +32,7 @@ public class EventoVentanaSimple extends MainWindow<Evento> {
 		this.setTitle("Evento_Simple");
 		//mainPanel.setWidth(400);
 		
-		this.setIconImage("icon");
+		//this.setIconImage("icon");
 		
 		Panel descEvento = new Panel(mainPanel);
 		
