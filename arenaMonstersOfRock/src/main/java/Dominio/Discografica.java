@@ -3,6 +3,9 @@ package Dominio;
 import java.util.Collection;
 import java.util.HashSet;
 
+import org.uqbar.commons.utils.Observable;
+
+@Observable
 public class Discografica implements Organizador {
 
 	private Collection<Disco> discosProducidos= new HashSet<Disco>();

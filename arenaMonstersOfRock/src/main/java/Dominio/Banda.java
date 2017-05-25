@@ -1,7 +1,7 @@
 package Dominio;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 import org.uqbar.commons.utils.Observable;
 
@@ -9,7 +9,7 @@ import org.uqbar.commons.utils.Observable;
 public class Banda {
 
 	private Double cachet;
-	private Collection<Disco> discos = new ArrayList<Disco>();
+	private List<Disco> discos = new ArrayList<Disco>();
 	private String generoMusical;
 	private Pais pais;
 	private String nombre;
@@ -72,10 +72,10 @@ public class Banda {
 		this.generoMusical = generoMusical;
 	}
 	
-	public Collection<Disco> getDiscos() {
+	public List<Disco> getDiscos() {
 		return discos;
 	}
-	public void setDiscos(Collection<Disco> discos) {
+	public void setDiscos(List<Disco> discos) {
 		this.discos = discos;
 	}
 

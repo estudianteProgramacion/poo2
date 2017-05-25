@@ -1,11 +1,13 @@
 package ui;
 
 import org.uqbar.arena.layout.ColumnLayout;
+import org.uqbar.arena.layout.HorizontalLayout;
+import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
+import org.uqbar.arena.widgets.NumericField;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.tables.Column;
 import org.uqbar.arena.widgets.tables.Table;
-import org.uqbar.arena.windows.MainWindow;
 import org.uqbar.arena.windows.Window;
 import org.uqbar.arena.windows.WindowOwner;
 
@@ -24,34 +26,33 @@ public class BandaVentanaSimplePopUp extends Window<Banda> {
 
 	@Override
 	public void createContents(Panel mainPanel) {
-		mainPanel.setWidth(200);
+		
 		this.setTitle("Banda");
-		
-		Panel detalles = new Panel(mainPanel);
-		
-		detalles.setLayout(new ColumnLayout(2));
-		
-		new Label(detalles).setText("Nombre");
-		new Label(detalles).bindValueToProperty("nombre");
+		new PanelBandaSimple(mainPanel);
+		this.construirBarra(mainPanel);
 	
-		new Label(detalles).setText("País");
-		new Label(detalles).bindValueToProperty("pais.name");
-		
-		new Label(detalles).setText("Género");
-		new Label(detalles).bindValueToProperty("generoMusical");
+	}
 	
+	private void construirBarra(Panel mainPanel){
+		ControlerDiscosBanda controladorDiscos = new ControlerDiscosBanda(this.getModelObject());
 		
-		Table<Disco> discos = new Table<>(mainPanel, Disco.class);
-		discos.bindItemsToProperty("discos");
+		Panel barrita = new Panel(mainPanel,controladorDiscos); 
+		barrita.setLayout(new HorizontalLayout());
 		
-		new Column<>(discos)
-			.setTitle("Nombre")
-			.bindContentsToProperty("nombre");
+		NumericField numFila = new NumericField(barrita);
+		numFila.bindValueToProperty("filaActual");
 		
-		new Column<>(discos)
-			.setTitle("CopiasTotales")
-			.bindContentsToProperty("copiasVendidas");
+		Button mostrarDiscos = new Button(barrita);
+		mostrarDiscos.setCaption("ver Disco");
+		mostrarDiscos.onClick(
+			() -> {
+				//TODO chekeo de max min y visor
+				new DiscosVentanaPopUp(this,controladorDiscos.getDiscoActual()).open();
+			}
+		);
 	}
 
 	
 }
+
+	

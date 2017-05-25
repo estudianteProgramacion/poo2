@@ -1,5 +1,8 @@
 package Dominio;
 
+import org.uqbar.commons.utils.Observable;
+
+@Observable
 public class CantDiscosPais {
 
 	private int cantDiscosVendidos;

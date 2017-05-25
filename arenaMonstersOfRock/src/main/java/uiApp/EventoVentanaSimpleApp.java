@@ -82,6 +82,9 @@ public class EventoVentanaSimpleApp {
 		e3.agregarPresentacion(presAngelsAngelitos);
 		e3.agregarPresentacion(presStonesFalshpoint);
 		
+		//TODO me quedan como dos paises diferentes
+		CantDiscosPais eeuu1Angelitos = new CantDiscosPais(eeuu, 3000);
+		angelitos.agregarPais(eeuu1Angelitos);
 		
 		EventoVentanaSimple window = new EventoVentanaSimple(e3);
 		window.startApplication();

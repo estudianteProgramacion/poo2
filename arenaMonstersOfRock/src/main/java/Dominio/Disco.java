@@ -1,7 +1,8 @@
 package Dominio;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.List;
 
 import org.uqbar.commons.utils.Observable;
 
@@ -10,7 +11,7 @@ public class Disco {
 
 	private int anioDePublicacion;
 	private Discografica productor;
-	private Collection<CantDiscosPais> cantDiscosyPaises= new HashSet<CantDiscosPais>();
+	private List<CantDiscosPais> cantDiscosyPaises= new ArrayList<CantDiscosPais>();
 	private Banda banda;
 	private String nombre;
 	
@@ -65,11 +66,11 @@ public class Disco {
 		this.productor = productor;
 	}
 
-	public Collection<CantDiscosPais> getCantDiscosyPaises() {
+	public List<CantDiscosPais> getCantDiscosyPaises() {
 		return cantDiscosyPaises;
 	}
 
-	public void setCantDiscosyPaises(Collection<CantDiscosPais> cantDiscosyPaises) {
+	public void setCantDiscosyPaises(List<CantDiscosPais> cantDiscosyPaises) {
 		this.cantDiscosyPaises = cantDiscosyPaises;
 	}
 
