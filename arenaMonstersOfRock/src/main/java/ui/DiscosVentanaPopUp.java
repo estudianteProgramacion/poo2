@@ -13,6 +13,7 @@ import org.uqbar.arena.windows.WindowOwner;
 import Dominio.CantDiscosPais;
 import Dominio.Disco;
 import Dominio.Presentacion;
+import scala.Enumeration.Val;
 
 public class DiscosVentanaPopUp extends Window<Disco> {
 
@@ -30,6 +31,12 @@ public class DiscosVentanaPopUp extends Window<Disco> {
 	public void createContents(Panel mainPanel) {
 
 		this.setTitle("Disco");
+		
+		//TODO IMAGENES VER
+//		 Label imageLabel = new Label(mainPanel);
+//				 imageLabel.bindImageToProperty(", null
+//				     
+//				    );
 		
 		Panel desc = new Panel(mainPanel);
 		desc.setLayout(new ColumnLayout(2));

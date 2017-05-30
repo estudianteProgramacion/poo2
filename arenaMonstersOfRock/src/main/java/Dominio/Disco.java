@@ -3,6 +3,8 @@ package Dominio;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.uqbar.commons.utils.Observable;
 
@@ -45,10 +47,28 @@ public class Disco {
 	}
 	
 	public void agregarPais(CantDiscosPais p){
-		this.getCantDiscosyPaises().add(p);
+		if (! this.estaPaisAgregado(p)){
+			this.getCantDiscosyPaises().add(p);
+		} else {
+			this.agregarDiscosANombrePais(p);
+		}
+		;
 	}
 	
+	private void agregarDiscosANombrePais(CantDiscosPais p) {
+		this.getCantDiscosyPaises().get(this.getPosicionDePais(p.getPais())).addCantDiscosVendidos(p.getCantDiscosVendidos());;
+	}
+	private int getPosicionDePais(Pais pais) {
+		return this.getCantDiscosyPaises().stream()
+				.map(cdp -> cdp.getPais().getName())
+				.collect(Collectors.toList())
+				.indexOf(pais.getName());
+	}
+	private boolean estaPaisAgregado(CantDiscosPais p) {
+		return this.getCantDiscosyPaises().contains(p);
+	}
 	//Setters y Getters
+	
 	
 	public int getAnioDePublicacion() {
 		return anioDePublicacion;

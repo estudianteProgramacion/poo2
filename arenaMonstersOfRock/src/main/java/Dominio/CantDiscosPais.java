@@ -15,6 +15,11 @@ public class CantDiscosPais {
 	
 	//Setter y Getters
 	
+	@Override
+	public boolean equals(Object a){
+		return this.getPais().equals(((CantDiscosPais) a).getPais());
+	}
+	
 	public int getCantDiscosVendidos() {
 		return cantDiscosVendidos;
 	}
@@ -28,5 +33,9 @@ public class CantDiscosPais {
 
 	public void setPais(Pais pais) {
 		this.pais = pais;
+	}
+
+	public void addCantDiscosVendidos(int cantDiscosVendidos2) {
+		this.setCantDiscosVendidos(this.getCantDiscosVendidos() + cantDiscosVendidos2);
 	}
 }
