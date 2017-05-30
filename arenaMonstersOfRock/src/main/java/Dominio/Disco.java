@@ -56,13 +56,14 @@ public class Disco {
 	}
 	
 	private void agregarDiscosANombrePais(CantDiscosPais p) {
-		this.getCantDiscosyPaises().get(this.getPosicionDePais(p.getPais())).addCantDiscosVendidos(p.getCantDiscosVendidos());;
+		this.getCantDiscosyPaises().get(this.getPosicionDePais(p.getPais()))
+								    	.addCantDiscosVendidos(p.getCantDiscosVendidos());;
 	}
 	private int getPosicionDePais(Pais pais) {
 		return this.getCantDiscosyPaises().stream()
-				.map(cdp -> cdp.getPais().getName())
+				.map(cdp -> cdp.getPais())
 				.collect(Collectors.toList())
-				.indexOf(pais.getName());
+				.indexOf(pais);
 	}
 	private boolean estaPaisAgregado(CantDiscosPais p) {
 		return this.getCantDiscosyPaises().contains(p);
