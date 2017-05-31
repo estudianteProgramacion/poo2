@@ -3,7 +3,10 @@ package ui;
 import java.awt.Color;
 
 import org.uqbar.arena.layout.ColumnLayout;
+import org.uqbar.arena.layout.HorizontalLayout;
+import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
+import org.uqbar.arena.widgets.NumericField;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.tables.Column;
 import org.uqbar.arena.widgets.tables.Table;
@@ -67,6 +70,39 @@ public class DiscosVentanaPopUp extends Window<Disco> {
 		.bindContentsToProperty("cantDiscosVendidos");
 	
 		
+		
+		this.hacerNav(mainPanel);
 	}
 
+	protected void hacerNav(Panel mainPanel){
+		
+		ControlerDisco controlerDisco = new ControlerDisco(this.getModelObject());
+		
+		Panel navCompleto = new Panel(mainPanel,controlerDisco);
+		
+		
+		Panel selector = new Panel(navCompleto);
+		
+		new Label(selector).setText("Fila");
+		
+		new NumericField(selector).bindValueToProperty("filaActual");
+		
+		
+		Panel navBotones = new Panel(navCompleto);
+		navBotones.setLayout(new HorizontalLayout());
+		
+		Button eliminar= new Button(navBotones);
+		eliminar.setCaption("eliminar");
+		eliminar.onClick(() -> {
+					if (controlerDisco.existeFilaActual()){
+						controlerDisco.resetVisor();
+						controlerDisco.eliminarActual();
+					} else {
+						controlerDisco.setVisor( "valor no valido" );
+					}
+		});
+		
+		new Panel(navBotones).bindContentsToProperty("visor");
+	
+	}
 }

@@ -66,8 +66,9 @@ public class Disco {
 				.indexOf(pais);
 	}
 	private boolean estaPaisAgregado(CantDiscosPais p) {
-		return this.getCantDiscosyPaises().contains(p);
+		return this.getCantDiscosyPaises().stream().anyMatch( cdp -> cdp.getPais().equals(p.getPais()) );
 	}
+	
 	//Setters y Getters
 	
 	

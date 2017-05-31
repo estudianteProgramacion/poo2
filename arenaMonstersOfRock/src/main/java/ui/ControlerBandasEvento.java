@@ -25,7 +25,7 @@ public class ControlerBandasEvento {
 		return this.getNroBandaActual() > 0 
 				&& this.getEvento().getBandas().size() >= this.getNroBandaActual();
 	}
-
+	
 	public Banda getBandaActual() {
 		return this.getEvento().getBandas().get(this.getNroBandaActual() - 1);
 	}

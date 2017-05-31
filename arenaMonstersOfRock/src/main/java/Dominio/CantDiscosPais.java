@@ -15,11 +15,6 @@ public class CantDiscosPais {
 	
 	//Setter y Getters
 	
-	@Override
-	public boolean equals(Object a){
-		return this.getPais().equals(((CantDiscosPais) a).getPais());
-	}
-	
 	public int getCantDiscosVendidos() {
 		return cantDiscosVendidos;
 	}
