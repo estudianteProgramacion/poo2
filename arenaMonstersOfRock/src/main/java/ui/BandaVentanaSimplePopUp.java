@@ -1,5 +1,7 @@
 package ui;
 
+import java.awt.Color;
+
 import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.layout.HorizontalLayout;
 import org.uqbar.arena.widgets.Button;
@@ -34,6 +36,10 @@ public class BandaVentanaSimplePopUp extends Window<Banda> {
 	}
 	
 	private void construirBarra(Panel mainPanel){
+		
+		Color colorTexto1 = new Color(0,76,156);
+		Color colorTexto2 = new Color(153,153,0);
+		
 		ControlerDiscosBanda controladorDiscos = new ControlerDiscosBanda(this.getModelObject());
 		
 		Panel barrita = new Panel(mainPanel,controladorDiscos); 
@@ -46,10 +52,17 @@ public class BandaVentanaSimplePopUp extends Window<Banda> {
 		mostrarDiscos.setCaption("ver Disco");
 		mostrarDiscos.onClick(
 			() -> {
-				//TODO chekeo de max min y visor
-				new DiscosVentanaPopUp(this,controladorDiscos.getDiscoActual()).open();
+				if (controladorDiscos.esNumeroValido()){
+					new DiscosVentanaPopUp(this,controladorDiscos.getDiscoActual()).open();
+				} else {
+					controladorDiscos.setVisor(
+							"valor no valido"
+					);
+				}
 			}
 		);
+		
+		new Label(barrita).bindValueToProperty("visor");
 	}
 
 	

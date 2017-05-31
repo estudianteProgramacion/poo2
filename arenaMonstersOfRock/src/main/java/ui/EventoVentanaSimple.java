@@ -8,6 +8,7 @@ import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.NumericField;
 import org.uqbar.arena.widgets.Panel;
+import org.uqbar.arena.widgets.style.Style;
 import org.uqbar.arena.widgets.tables.Column;
 import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.MainWindow;
@@ -30,9 +31,10 @@ public class EventoVentanaSimple extends MainWindow<Evento> {
 		this.setTitle("Evento");
 		
 		this.setTitle("Evento_Simple");
-		//mainPanel.setWidth(400);
-		
 		//this.setIconImage("icon");
+		
+		//espacio arriba de la ventana // Padding
+		new Label(mainPanel).setText("").setHeight(20);
 		
 		Panel descEvento = new Panel(mainPanel);
 		
@@ -56,10 +58,13 @@ public class EventoVentanaSimple extends MainWindow<Evento> {
 		new Label(descEvento).setText("Duracion:").setFontSize(12).setForeground(colorTexto1);
 		new Label(descEvento).setFontSize(13).setForeground(colorTexto2).bindValueToProperty("tiempoTotalPresentaciones");
 		
+		//espacio entre tabla y desc
+		new Label(mainPanel).setText("").setHeight(15);
+		
 		Table<Presentacion> bandas = new Table<>(mainPanel, Presentacion.class);
 		bandas.bindItemsToProperty("presentaciones");
 		
-		bandas.setNumberVisibleRows(6);
+		bandas.setNumberVisibleRows(5);
 		
 		new Column<>(bandas)
 			.setForeground(Color.darkGray)
@@ -74,17 +79,21 @@ public class EventoVentanaSimple extends MainWindow<Evento> {
 			.setTitle("Duracion")
 			.bindContentsToProperty("minutos");
 		
+		//espacio entre tabla y barra de acciones
+		new Label(mainPanel).setText("").setHeight(20);
 		
 		this.construirBarraDeAcciones(mainPanel);
 		
+		//espacio arriba de la ventana // Padding
+		new Label(mainPanel).setText("").setHeight(20);
 		
+		mainPanel.setWidth(600);
 	}
 
 	private void construirBarraDeAcciones(Panel mainPanel) {
-		// TODO Auto-generated method stub
+		
 		ControlerBandasEvento controlerBandas = new ControlerBandasEvento(this.getModelObject());
 
-		
 		Panel botones = new Panel(mainPanel,controlerBandas);
 		botones.setLayout(new HorizontalLayout());
 		
