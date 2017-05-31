@@ -98,11 +98,11 @@ public class DiscosVentanaPopUp extends Window<Disco> {
 						controlerDisco.resetVisor();
 						controlerDisco.eliminarActual();
 					} else {
-						controlerDisco.setVisor( "valor no valido" );
+						controlerDisco.setVisor( "valores entre 1 y " + this.getModelObject().getCantDiscosyPaises().size() );
 					}
 		});
 		
-		new Panel(navBotones).bindContentsToProperty("visor");
+		new Label(navBotones).bindValueToProperty("visor");
 	
 	}
 }
