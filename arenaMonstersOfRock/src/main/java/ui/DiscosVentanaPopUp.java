@@ -12,6 +12,7 @@ import org.uqbar.arena.widgets.tables.Column;
 import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.Window;
 import org.uqbar.arena.windows.WindowOwner;
+import org.uqbar.commons.model.ObservableUtils;
 
 import Dominio.CantDiscosPais;
 import Dominio.Disco;
@@ -120,6 +121,7 @@ public class DiscosVentanaPopUp extends Window<Disco> {
 		selectionWindow ventana = new selectionWindow(this, editClone);
 		ventana.onAccept(() -> {
 					this.getModelObject().remplazarCDP(editClone,edit);
+					ObservableUtils.firePropertyChanged(this.getModelObject(), "copiasVendidas");
 					}
 				);
 		ventana.open();
@@ -130,6 +132,7 @@ public class DiscosVentanaPopUp extends Window<Disco> {
 		selectionWindow ventana = new selectionWindow(this, nuevo);
 		ventana.onAccept(() -> {
 					this.getModelObject().agregarPais(nuevo);
+					ObservableUtils.firePropertyChanged(this.getModelObject(), "copiasVendidas");
 					}
 				);
 		ventana.open();
