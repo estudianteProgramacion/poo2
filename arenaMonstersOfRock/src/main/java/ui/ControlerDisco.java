@@ -16,8 +16,16 @@ public class ControlerDisco {
 		this.setDisco(disco);
 	}
 
-
-	public void eliminarActual() {
+	public void eliminar() {
+		if (this.existeFilaActual()){
+			this.resetVisor();
+			this.eliminarActual();
+		} else {
+			this.setVisor( "valores entre 1 y " + this.getDisco().getCantDiscosyPaises().size() );
+		}
+	}
+	
+	protected void eliminarActual() {
 		this.getDisco().getCantDiscosyPaises().remove(this.getFilaActual() - 1);
 	}
 
@@ -63,6 +71,8 @@ public class ControlerDisco {
 	public void setVisor(String visor) {
 		this.visor = visor;
 	}
+
+
 
 
 

@@ -91,18 +91,31 @@ public class DiscosVentanaPopUp extends Window<Disco> {
 		Panel navBotones = new Panel(navCompleto);
 		navBotones.setLayout(new HorizontalLayout());
 		
+		
+		Button agregar = new Button(navBotones);
+		agregar.setCaption("agregar");
+		agregar.onClick( () -> {
+				this.agregarSelectionWindow();
+			}	
+		);
+		
 		Button eliminar= new Button(navBotones);
 		eliminar.setCaption("eliminar");
 		eliminar.onClick(() -> {
-					if (controlerDisco.existeFilaActual()){
-						controlerDisco.resetVisor();
-						controlerDisco.eliminarActual();
-					} else {
-						controlerDisco.setVisor( "valores entre 1 y " + this.getModelObject().getCantDiscosyPaises().size() );
-					}
+			controlerDisco.eliminar();
 		});
 		
-		new Label(navBotones).bindValueToProperty("visor");
+		new Label(navCompleto).bindValueToProperty("visor");
 	
+	}
+
+	private void agregarSelectionWindow() {
+		CantDiscosPais nuevo = new CantDiscosPais(StorePaises.getInstance().getFirst(), 0);
+		selectionWindow ventana = new selectionWindow(this, nuevo);
+		ventana.onAccept(() -> {
+					this.getModelObject().agregarPais(nuevo);
+					}
+				);
+		ventana.open();
 	}
 }
