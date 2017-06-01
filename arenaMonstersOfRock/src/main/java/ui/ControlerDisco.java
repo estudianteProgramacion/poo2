@@ -72,8 +72,4 @@ public class ControlerDisco {
 		this.visor = visor;
 	}
 
-
-
-
-
 }

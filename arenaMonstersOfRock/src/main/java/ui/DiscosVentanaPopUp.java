@@ -15,8 +15,6 @@ import org.uqbar.arena.windows.WindowOwner;
 
 import Dominio.CantDiscosPais;
 import Dominio.Disco;
-import Dominio.Presentacion;
-import scala.Enumeration.Val;
 
 public class DiscosVentanaPopUp extends Window<Disco> {
 
@@ -99,6 +97,14 @@ public class DiscosVentanaPopUp extends Window<Disco> {
 			}	
 		);
 		
+		Button editar = new Button(navBotones);
+		editar.setCaption("editar");
+		editar.onClick( () -> {
+				this.editarSelectionWindow(controlerDisco.getVentas());
+			}	
+		);
+		
+		
 		Button eliminar= new Button(navBotones);
 		eliminar.setCaption("eliminar");
 		eliminar.onClick(() -> {
@@ -107,6 +113,16 @@ public class DiscosVentanaPopUp extends Window<Disco> {
 		
 		new Label(navCompleto).bindValueToProperty("visor");
 	
+	}
+
+	private void editarSelectionWindow(CantDiscosPais edit) {
+		CantDiscosPais editClone = new CantDiscosPais(edit.getPais(), edit.getCantDiscosVendidos());
+		selectionWindow ventana = new selectionWindow(this, editClone);
+		ventana.onAccept(() -> {
+					this.getModelObject().remplazarCDP(editClone,edit);
+					}
+				);
+		ventana.open();
 	}
 
 	private void agregarSelectionWindow() {

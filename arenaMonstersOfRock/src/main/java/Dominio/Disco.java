@@ -111,6 +111,11 @@ public class Disco {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	public void remplazarCDP(CantDiscosPais editClone, CantDiscosPais edit) {
+		int index = this.getCantDiscosyPaises().indexOf(edit);
+		this.getCantDiscosyPaises().remove(edit);
+		this.getCantDiscosyPaises().add(index, editClone);
+	}
 
 
 	
