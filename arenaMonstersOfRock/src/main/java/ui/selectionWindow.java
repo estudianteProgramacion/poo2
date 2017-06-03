@@ -12,6 +12,7 @@ import org.uqbar.arena.windows.WindowOwner;
 
 import Dominio.CantDiscosPais;
 import Dominio.Pais;
+import Dominio.StorePaises;
 
 public class selectionWindow extends Dialog<CantDiscosPais> {
 

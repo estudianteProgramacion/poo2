@@ -1,11 +1,9 @@
-package ui;
+package Dominio;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.uqbar.commons.utils.Observable;
-
-import Dominio.Pais;
 
 @Observable
 public class StorePaises {

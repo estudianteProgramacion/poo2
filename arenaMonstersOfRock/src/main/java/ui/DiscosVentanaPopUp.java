@@ -16,6 +16,7 @@ import org.uqbar.commons.model.ObservableUtils;
 
 import Dominio.CantDiscosPais;
 import Dominio.Disco;
+import Dominio.StorePaises;
 
 public class DiscosVentanaPopUp extends Window<Disco> {
 

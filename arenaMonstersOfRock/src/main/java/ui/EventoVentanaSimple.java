@@ -12,9 +12,13 @@ import org.uqbar.arena.widgets.style.Style;
 import org.uqbar.arena.widgets.tables.Column;
 import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.MainWindow;
+import org.uqbar.commons.model.ObservableUtils;
 
+import Dominio.Banda;
+import Dominio.Disco;
 import Dominio.Evento;
 import Dominio.Presentacion;
+import Dominio.StorePaises;
 
 public class EventoVentanaSimple extends MainWindow<Evento> {
 	/**
@@ -84,10 +88,8 @@ public class EventoVentanaSimple extends MainWindow<Evento> {
 		
 		this.construirBarraDeAcciones(mainPanel);
 		
-		//espacio arriba de la ventana // Padding
+		// Padding
 		new Label(mainPanel).setText("").setHeight(20);
-		
-		mainPanel.setWidth(600);
 	}
 
 	private void construirBarraDeAcciones(Panel mainPanel) {
@@ -116,9 +118,27 @@ public class EventoVentanaSimple extends MainWindow<Evento> {
 				}
 			});
 		
+		//espacio entre boton
+		new Label(botones).setWidth(50);
+		
+		new Button(botones)
+			.setCaption("agregar")
+			.onClick( () -> {
+					 this.agregarBandaSelectionWindow();
+					}
+			);
 		
 		Label visor = new Label(botones);
 		visor.bindValueToProperty("text");
+	}
+	
+	private void agregarBandaSelectionWindow() {
+		Presentacion nuevaP = new Presentacion(0, null); 
+		BandaSelectionWindow windowB = new BandaSelectionWindow(this, nuevaP);
+		windowB.onAccept(() -> {
+			this.getModelObject().agregarPresentacion(nuevaP);
+			ObservableUtils.firePropertyChanged(this.getModelObject(), "presentaciones");
+		});
 	}
 
 }
