@@ -2,6 +2,7 @@ package Dominio;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.uqbar.commons.utils.Observable;
 
@@ -16,6 +17,13 @@ public class StorePaises {
 		this.ponerPaises();
 	}
 	
+	public static StorePaises getInstance(){
+		if(instance==null){
+			instance= new StorePaises();
+		}
+		return instance;
+	}
+		
 	private void ponerPaises() {
 		this.agregarPais(new Pais("argentina"));
 		this.agregarPais(new Pais("uruguay"));
@@ -26,13 +34,6 @@ public class StorePaises {
 		this.getPaises().add(pais);
 	}
 
-	public static StorePaises getInstance(){
-		if(instance==null){
-			instance= new StorePaises();
-		}
-		return instance;
-	}
-	
 	public List<Pais> getPaises() {
 		return paises;
 	}
@@ -43,6 +44,27 @@ public class StorePaises {
 
 	public Pais getFirst() {
 		return this.getPaises().get(0);
+	}
+
+//	public Pais getPaisNombre(String nPais) throws Exception{
+//		if (estaPaisNombre(nPais)){
+//				 this.getPais(nPais);
+//			} else {
+//				throw new Exception("el nombre de pais " + nPais + " no esta en el Store");
+//			}
+//		return null;	
+//	}
+
+//	public boolean estaPaisNombre(String nPais) {
+//		return this.getPaises().stream().anyMatch(p -> p.getName().equals(nPais));
+//	}
+
+	public Pais getPais(String nPais) {
+		int indexPais = this.getPaises().stream()
+						.map(p -> p.getName())
+						.collect(Collectors.toList())
+						.indexOf(nPais);
+		return this.getPaises().get(indexPais);
 	}
 	
 }

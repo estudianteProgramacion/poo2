@@ -36,9 +36,6 @@ public class ControlerDisco {
 	public boolean existeFilaActual() {
 		return this.getFilaActual() > 0 && this.getDisco().getCantDiscosyPaises().size() >= this.getFilaActual();
 	}
-
-	
-	
 	
 	public Disco getDisco() {
 		return disco;

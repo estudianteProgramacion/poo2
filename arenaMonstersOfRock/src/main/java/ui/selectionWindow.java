@@ -39,12 +39,7 @@ public class selectionWindow extends Dialog<CantDiscosPais> {
 		selectorDePais.bindValueToProperty("pais");
 		selectorDePais.setWidth(220);
 		selectorDePais.setHeight(80);
-		
-		//Fallido de hacer Selector
-//		 Binding<Object, Selector<Pais>, ListBuilder<Pais>> selector = new Selector<Pais>(mainPanel)
-//			.bindValueToProperty("renglonAEditar")
-//			.bindItems(new ObservableProperty<>(StorePaises.getInstance(), "paises"));
-		
+			
 		new Label(mainPanel).setText("Seleccione cantidad").setFontSize(12);
 		 
 		new NumericField(mainPanel).bindValueToProperty("cantDiscosVendidos"); 

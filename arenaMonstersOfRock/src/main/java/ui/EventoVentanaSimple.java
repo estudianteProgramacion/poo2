@@ -119,7 +119,7 @@ public class EventoVentanaSimple extends MainWindow<Evento> {
 			});
 		
 		//espacio entre boton
-		new Label(botones).setWidth(50);
+		new Label(botones).setWidth(15);
 		
 		new Button(botones)
 			.setCaption("agregar")
@@ -128,17 +128,27 @@ public class EventoVentanaSimple extends MainWindow<Evento> {
 					}
 			);
 		
+		new Button(botones)
+		.setCaption("borrar")
+		.onClick( () -> {
+				 this.getModelObject().quitarBanda(controlerBandas.getBandaActual());
+				}
+		);
+		
 		Label visor = new Label(botones);
 		visor.bindValueToProperty("text");
 	}
 	
+
+
 	private void agregarBandaSelectionWindow() {
-		Presentacion nuevaP = new Presentacion(0, null); 
+		Presentacion nuevaP = new Presentacion(); 
 		BandaSelectionWindow windowB = new BandaSelectionWindow(this, nuevaP);
 		windowB.onAccept(() -> {
 			this.getModelObject().agregarPresentacion(nuevaP);
 			ObservableUtils.firePropertyChanged(this.getModelObject(), "presentaciones");
 		});
+		windowB.open();
 	}
 
 }

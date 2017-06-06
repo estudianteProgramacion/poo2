@@ -31,6 +31,39 @@ public abstract class Evento {
 		this.setNombre(nombre);
 	}
 	
+	public void quitarBanda(Banda b) {
+		try {
+			this.quitarPresentacion(this.presentacionDeBanda(b));
+		} catch (Exception e) {
+			System.out.println("no se pudo quitar la banda");
+			e.printStackTrace();
+		}
+	}
+	
+	private Presentacion presentacionDeBanda(Banda b) {
+		return this.getPresentaciones().stream()
+				.filter(p -> p.getBanda().equals(b))
+				.collect(Collectors.toList())
+				.get(0);
+	}
+
+	public void quitarPresentacion(Presentacion p) throws Exception{
+		if (this.estaPresentacion(p)){
+			this.quitar(p);
+		} else {
+			throw new Exception("Esta Presentacion no existe");
+		}
+	}
+	
+	private void quitar(Presentacion p) {
+		int index = this.getPresentaciones().indexOf(p);
+		this.getPresentaciones().remove(index);
+	}
+
+	private boolean estaPresentacion(Presentacion p) {
+		return this.getPresentaciones().contains(p);
+	}
+
 	public double indiceDeExitoPotencial(){
 		return this.copiasVendidasDeBandasEnPaisDeEvento() 
 				* (1 + (this.cantBandasDePais(this.getPaisDeEvento()) * 0.05 ));
