@@ -18,6 +18,7 @@ import Dominio.Banda;
 import Dominio.Disco;
 import Dominio.Evento;
 import Dominio.Presentacion;
+import Dominio.StoreBandas;
 import Dominio.StorePaises;
 
 public class EventoVentanaSimple extends MainWindow<Evento> {
@@ -143,6 +144,8 @@ public class EventoVentanaSimple extends MainWindow<Evento> {
 
 	private void agregarBandaSelectionWindow() {
 		Presentacion nuevaP = new Presentacion(); 
+		//esta cosa horrible del disco lo hice para que compile
+		nuevaP.setDisco(new Disco("nothing", 0, StoreBandas.getInstance().getBandas().get(0), null));
 		BandaSelectionWindow windowB = new BandaSelectionWindow(this, nuevaP);
 		windowB.onAccept(() -> {
 			this.getModelObject().agregarPresentacion(nuevaP);

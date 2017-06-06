@@ -5,14 +5,13 @@ import org.uqbar.commons.utils.Observable;
 import Dominio.Banda;
 import Dominio.Disco;
 import Dominio.Presentacion;
+import Dominio.StoreBandas;
 
 @Observable
 public class ControlerPresentacion {
 
 	private Presentacion presentacion;
-	private Banda banda;
-	private Disco disco;
-	private boolean visible = false;
+	private Banda banda = StoreBandas.getInstance().getBandas().get(0);
 	
 	public ControlerPresentacion(Presentacion p){
 		super();
@@ -21,7 +20,6 @@ public class ControlerPresentacion {
 
 	public Banda getBanda() {
 		return banda;
-				//(this.getPresentacion().getBanda() == null)?banda:this.getPresentacion().getBanda();
 	}
 
 	public void setBanda(Banda banda) {
@@ -45,20 +43,11 @@ public class ControlerPresentacion {
 	}
 
 	public Disco getDisco() {
-		return this.disco;
+		return this.presentacion.getDisco();
 	}
 
 	public void setDisco(Disco disco) {
-		this.disco = disco;
 		this.presentacion.setDisco(disco);
 	}
 
-	public boolean isVisible() {
-		return visible;
-	}
-
-	public void setVisible(boolean visible) {
-		this.visible = visible;
-	}
-	
 }

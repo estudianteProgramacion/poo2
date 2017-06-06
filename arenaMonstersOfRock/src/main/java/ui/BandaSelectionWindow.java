@@ -47,9 +47,10 @@ public class BandaSelectionWindow extends Dialog<Presentacion> {
 				.bindItems(new ObservableProperty<>(StoreBandas.getInstance(), "bandas"))
 				.setAdapter(new PropertyAdapter(Banda.class, "nombre"));
 		selectorDeBanda.bindValueToProperty("banda");
-		selectorDeBanda.onSelection(()-> {
-			ObservableUtils.firePropertyChanged(this.getModelObject(), "banda");
-		});
+		//solo para ver que ande
+		selectorDeBanda.onSelection(()-> { 
+			System.out.println("banda actual " + controlPresentacion.getBanda().getNombre());});
+
 		
 		new Label(mainPanel).setText("seleccione Disco");
 		
