@@ -1,12 +1,17 @@
 package ui;
 
+import java.awt.Color;
+
 import org.uqbar.arena.layout.ColumnLayout;
-import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.tables.Column;
 import org.uqbar.arena.widgets.tables.Table;
 
 import Dominio.Disco;
+import uiProp.LabelH1;
+import uiProp.LabelH2;
+import uiProp.LabelH3;
+import uiProp.PropMonsters;
 
 public class PanelBandaSimple {
 
@@ -19,27 +24,24 @@ public class PanelBandaSimple {
 	}
 		
 	private void construir(){
-
-	mainPanel.setWidth(200);
 	
 	Panel detalles = new Panel(getMainPanel());
-	
 	detalles.setLayout(new ColumnLayout(2));
 	
-	new Label(detalles).setText("Nombre");
-	new Label(detalles).bindValueToProperty("nombre");
+	new LabelH2(detalles,PropMonsters.color1).setText("Nombre");
+	new LabelH1(detalles,PropMonsters.color2).bindValueToProperty("nombre");
 
-	new Label(detalles).setText("País");
-	new Label(detalles).bindValueToProperty("pais.name");
+	new LabelH3(detalles,PropMonsters.color1).setText("País");
+	new LabelH3(detalles,PropMonsters.color2).bindValueToProperty("pais.name");
 	
-	new Label(detalles).setText("Género");
-	new Label(detalles).bindValueToProperty("generoMusical");
+	new LabelH3(detalles,PropMonsters.color1).setText("Género");
+	new LabelH3(detalles,PropMonsters.color2).bindValueToProperty("generoMusical");
 
 	
 	Table<Disco> discos = new Table<>(getMainPanel(), Disco.class);
 	discos.bindItemsToProperty("discos");
 	
-	new Column<>(discos)
+	new Column<>(discos).setFont(12).setForeground(Color.BLUE).setBackground(Color.cyan)
 		.setTitle("Nombre")
 		.bindContentsToProperty("nombre");
 	

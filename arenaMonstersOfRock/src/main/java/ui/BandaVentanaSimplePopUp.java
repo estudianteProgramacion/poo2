@@ -15,6 +15,11 @@ import org.uqbar.arena.windows.WindowOwner;
 
 import Dominio.Banda;
 import Dominio.Disco;
+import uiProp.ButtonC;
+import uiProp.Espaciado;
+import uiProp.LabelH3;
+import uiProp.NumericFieldMonsters;
+import uiProp.PropMonsters;
 
 public class BandaVentanaSimplePopUp extends Window<Banda> {
 	/**
@@ -31,28 +36,27 @@ public class BandaVentanaSimplePopUp extends Window<Banda> {
 		
 		this.setTitle("Banda");
 		new PanelBandaSimple(mainPanel);
+		new Espaciado(mainPanel);
 		this.construirBarra(mainPanel);
 	
 	}
 	
 	private void construirBarra(Panel mainPanel){
 		
-		Color colorTexto1 = new Color(0,76,156);
-		Color colorTexto2 = new Color(153,153,0);
-		
 		ControlerDiscosBanda controladorDiscos = new ControlerDiscosBanda(this.getModelObject());
 		
 		Panel barrita = new Panel(mainPanel,controladorDiscos); 
 		barrita.setLayout(new HorizontalLayout());
 		
-		NumericField numFila = new NumericField(barrita);
+		NumericField numFila = new NumericFieldMonsters(barrita);
 		numFila.bindValueToProperty("filaActual");
 		
-		Button mostrarDiscos = new Button(barrita);
+		Button mostrarDiscos = new ButtonC(barrita);
 		mostrarDiscos.setCaption("ver Disco");
 		mostrarDiscos.onClick(
 			() -> {
 				if (controladorDiscos.esNumeroValido()){
+					controladorDiscos.resetVisor();
 					new DiscosVentanaPopUp(this,controladorDiscos.getDiscoActual()).open();
 				} else {
 					controladorDiscos.setVisor(
@@ -62,7 +66,7 @@ public class BandaVentanaSimplePopUp extends Window<Banda> {
 			}
 		);
 		
-		new Label(barrita).bindValueToProperty("visor");
+		new LabelH3(barrita,PropMonsters.color3).bindValueToProperty("visor");
 	}
 
 	

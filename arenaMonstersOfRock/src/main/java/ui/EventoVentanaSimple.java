@@ -20,6 +20,13 @@ import Dominio.Evento;
 import Dominio.Presentacion;
 import Dominio.StoreBandas;
 import Dominio.StorePaises;
+import uiProp.ButtonC;
+import uiProp.Espaciado;
+import uiProp.LabelH1;
+import uiProp.LabelH2;
+import uiProp.LabelH3;
+import uiProp.NumericFieldMonsters;
+import uiProp.PropMonsters;
 
 public class EventoVentanaSimple extends MainWindow<Evento> {
 	/**
@@ -35,44 +42,34 @@ public class EventoVentanaSimple extends MainWindow<Evento> {
 	public void createContents(Panel mainPanel) {
 		this.setTitle("Evento");
 		
-		this.setTitle("Evento_Simple");
 		//this.setIconImage("icon");
 		
-		//espacio arriba de la ventana // Padding
-		new Label(mainPanel).setText("").setHeight(20);
-		
 		Panel descEvento = new Panel(mainPanel);
-		
 		descEvento.setLayout(new ColumnLayout(2));
 		
-		Color colorTexto1 = new Color(0,76,156);
-		Color colorTexto2 = new Color(153,153,0);
 		
-		new Label(descEvento).setText("Nombre:").setFontSize(12).setForeground(colorTexto1);
-		new Label(descEvento).setFontSize(13).setForeground(colorTexto2).bindValueToProperty("nombre");
+		new LabelH2(descEvento,PropMonsters.color1).setText("Nombre: ");
+		new LabelH1(descEvento,PropMonsters.color2).bindValueToProperty("nombre");
 		
-		new Label(descEvento).setText("Pais:").setFontSize(12).setForeground(colorTexto1);
-		new Label(descEvento).setFontSize(12).setForeground(colorTexto2).bindValueToProperty("paisDeEvento.name");
+		new LabelH3(descEvento,PropMonsters.color1).setText("Pais: ");
+		new LabelH3(descEvento,PropMonsters.color2).bindValueToProperty("paisDeEvento.name");
 		
-		new Label(descEvento).setText("Ingreso Asegurado:").setFontSize(12).setForeground(colorTexto1);
-		new Label(descEvento).setFontSize(12).setForeground(colorTexto2).bindValueToProperty("ingresoAsegurado");
+		new LabelH3(descEvento,PropMonsters.color1).setText("Ingreso Asegurado: ");
+		new LabelH3(descEvento,PropMonsters.color2).bindValueToProperty("ingresoAsegurado");
 		
-		new Label(descEvento).setText("Gastos basicos:").setFontSize(12).setForeground(colorTexto1);
-		new Label(descEvento).setFontSize(12).setForeground(colorTexto2).bindValueToProperty("gastos");
+		new LabelH3(descEvento,PropMonsters.color1).setText("Gastos basicos: ");
+		new LabelH3(descEvento,PropMonsters.color2).bindValueToProperty("gastos");
 		
-		new Label(descEvento).setText("Duracion:").setFontSize(12).setForeground(colorTexto1);
-		new Label(descEvento).setFontSize(13).setForeground(colorTexto2).bindValueToProperty("tiempoTotalPresentaciones");
+		new LabelH3(descEvento,PropMonsters.color1).setText("Duracion: ");
+		new LabelH3(descEvento,PropMonsters.color2).bindValueToProperty("tiempoTotalPresentaciones");
 		
-		//espacio entre tabla y desc
-		new Label(mainPanel).setText("").setHeight(15);
+		new Espaciado(mainPanel);
 		
 		Table<Presentacion> bandas = new Table<>(mainPanel, Presentacion.class);
 		bandas.bindItemsToProperty("presentaciones");
+		bandas.setNumberVisibleRows(4);
 		
-		bandas.setNumberVisibleRows(5);
-		
-		new Column<>(bandas)
-			.setForeground(Color.darkGray)
+		new Column<>(bandas).setFont(12).setForeground(Color.BLUE).setBackground(Color.cyan)
 			.setTitle("Banda")
 			.bindContentsToProperty("banda.nombre");
 		
@@ -84,13 +81,11 @@ public class EventoVentanaSimple extends MainWindow<Evento> {
 			.setTitle("Duracion")
 			.bindContentsToProperty("minutos");
 		
-		//espacio entre tabla y barra de acciones
-		new Label(mainPanel).setText("").setHeight(20);
+		new Espaciado(mainPanel);
 		
 		this.construirBarraDeAcciones(mainPanel);
 		
-		// Padding
-		new Label(mainPanel).setText("").setHeight(20);
+
 	}
 
 	private void construirBarraDeAcciones(Panel mainPanel) {
@@ -99,9 +94,12 @@ public class EventoVentanaSimple extends MainWindow<Evento> {
 		
 		//Un panelsito para visor para que quede arriba del Numeric Field
 		Panel visor = new Panel(mainPanel, controlerBandas);
-	
-		Label visorText = new Label(visor);
+		visor.setLayout(new ColumnLayout(2));
+		
+		Label visorText = new LabelH3(visor,PropMonsters.color3);
 		visorText.bindValueToProperty("text");
+		
+		new LabelH3(visor,PropMonsters.color1).setText("Opciones para Bandas");
 		
 		Panel botones = new Panel(mainPanel,controlerBandas);
 		
@@ -109,12 +107,12 @@ public class EventoVentanaSimple extends MainWindow<Evento> {
 		botones.setLayout(new HorizontalLayout());
 		
 		
-		new Label(botones).setText("Nro. Fila Banda");
+		new LabelH3(botones, PropMonsters.color1).setText("  Nro. Fila \n Banda  ");
 
-		NumericField nroPres = new NumericField(botones);
+		NumericField nroPres = new NumericFieldMonsters(botones);
 		nroPres.bindValueToProperty("nroBandaActual");
 		
-		new Button(botones)
+		new ButtonC(botones)			
 			.setCaption("ver")
 			.onClick(() -> {
 				if (controlerBandas.esNumeroValido()){
@@ -128,24 +126,24 @@ public class EventoVentanaSimple extends MainWindow<Evento> {
 				}
 			});
 		
-		//espacio entre boton
-		new Label(botones).setWidth(15);
+		new Espaciado(botones);
+		new Espaciado(botones);
 		
-		new Button(botones)
+		new ButtonC(botones)
 			.setCaption("agregar")
 			.onClick( () -> {
 					 this.agregarBandaSelectionWindow();
 					}
 			);
 		
-		new Button(botones)
+		new ButtonC(botones)
 		.setCaption("editar")
 		.onClick( () -> {
 				 this.editarBandaSelectionWindow(controlerBandas.getBandaActual());
 				}
 		);
 		
-		new Button(botones)
+		new ButtonC(botones)
 		.setCaption("borrar")
 		.onClick( () -> {
 				 this.getModelObject().quitarBanda(controlerBandas.getBandaActual());

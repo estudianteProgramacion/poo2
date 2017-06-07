@@ -49,9 +49,7 @@ public class BandaSelectionWindow extends Dialog<Presentacion> {
 		selectorDeBanda.bindValueToProperty("banda");
 		
 		new Label(mainPanel).setText("seleccione Disco");
-		
-		ObservableUtils.dependencyOf(controlPresentacion, "banda", "discosBandaActual");
-		
+				
 		List<Disco> selectorDeDiscos = new List<Disco>(mainPanel);
 		selectorDeDiscos
 				.bindItems(new ObservableProperty<>(controlPresentacion, "discosBandaActual"))

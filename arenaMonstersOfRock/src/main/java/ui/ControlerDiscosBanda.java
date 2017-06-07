@@ -60,4 +60,8 @@ public class ControlerDiscosBanda {
 		this.visor = visor;
 	}
 
+	public void resetVisor() {
+		this.setVisor("");
+	}
+
 }
