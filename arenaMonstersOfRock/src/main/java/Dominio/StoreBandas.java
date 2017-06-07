@@ -27,11 +27,24 @@ public class StoreBandas {
 		Discografica elf = new Discografica("elf");
 		Discografica vamp = new Discografica("vamp");
 				
-		Disco flashpoint = new Disco(1991, this.getBanda("stones"), elf);
-		Disco noche = new Disco(2002, this.getBanda("bandana"), vamp);
+		Disco flashpoint = new Disco("flashPoint",1991, this.getBanda("stones"), elf);
+//		Disco pepe = new Disco("pepe", 1950, this.getBanda("stones"), elf);
+		Disco noche = new Disco("noche",2002, this.getBanda("bandana"), elf);
 //		Disco theEnd = new Disco(2017, stones, vamp);
 //		Disco angelitos = new Disco(2000, angels, elf);
 		
+		CantDiscosPais argFlashPoint = new CantDiscosPais(StorePaises.getInstance().getPais("argentina"), 2000);
+		CantDiscosPais argNoche = new CantDiscosPais(StorePaises.getInstance().getPais("argentina"), 150);
+		CantDiscosPais uruFlashPoint = new CantDiscosPais(StorePaises.getInstance().getPais("uruguay") , 1000);
+		CantDiscosPais uruNoche = new CantDiscosPais(StorePaises.getInstance().getPais("uruguay"), 200);
+		CantDiscosPais eeuuAngelitos = new CantDiscosPais(StorePaises.getInstance().getPais("eeuu"), 5000);
+		
+		flashpoint.agregarPais(argFlashPoint);
+		flashpoint.agregarPais(uruFlashPoint);
+		noche.agregarPais(uruNoche);
+		
+		
+//		this.getBanda("stones").agregarDisco(pepe);
 		this.getBanda("stones").agregarDisco(flashpoint);
 		this.getBanda("bandana").agregarDisco(noche);
 	}

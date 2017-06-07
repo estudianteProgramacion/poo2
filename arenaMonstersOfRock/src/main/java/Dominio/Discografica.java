@@ -17,6 +17,10 @@ public class Discografica implements Organizador {
 		this.setName(name);
 	}
 
+	public boolean equals(Object o){
+		return this.getName().equals(((Discografica) o).getName());
+	}
+	
 	//methods
 		@Override
 	public boolean puedeHacerPresentacionEnEvento( Presentacion p) {

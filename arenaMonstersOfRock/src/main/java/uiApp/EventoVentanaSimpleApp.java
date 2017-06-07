@@ -80,7 +80,7 @@ public class EventoVentanaSimpleApp {
 		e2.agregarPresentacion(presBandanaNoche);
 		
 		e3.agregarPresentacion(presAngelsAngelitos);
-		e3.agregarPresentacion(presStonesFalshpoint);
+		//e3.agregarPresentacion(presStonesFalshpoint);
 		
 		CantDiscosPais eeuu1Angelitos = new CantDiscosPais(eeuu, 3000);
 		angelitos.agregarPais(eeuu1Angelitos);

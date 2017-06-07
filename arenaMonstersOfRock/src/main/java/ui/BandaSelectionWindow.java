@@ -47,20 +47,17 @@ public class BandaSelectionWindow extends Dialog<Presentacion> {
 				.bindItems(new ObservableProperty<>(StoreBandas.getInstance(), "bandas"))
 				.setAdapter(new PropertyAdapter(Banda.class, "nombre"));
 		selectorDeBanda.bindValueToProperty("banda");
-		//solo para ver que ande
-		selectorDeBanda.onSelection(()-> { 
-			System.out.println("banda actual " + controlPresentacion.getBanda().getNombre());});
-
 		
 		new Label(mainPanel).setText("seleccione Disco");
 		
+		ObservableUtils.dependencyOf(controlPresentacion, "banda", "discosBandaActual");
 		
 		List<Disco> selectorDeDiscos = new List<Disco>(mainPanel);
 		selectorDeDiscos
-				.bindItems(new ObservableProperty<>(controlPresentacion.getBanda(), "discos"))
+				.bindItems(new ObservableProperty<>(controlPresentacion, "discosBandaActual"))
 				.setAdapter(new PropertyAdapter(Disco.class, "nombre"));
 		selectorDeDiscos.bindValueToProperty("disco");
-
+		
 		
 		new Label(mainPanel).setText("Tiempo de presentacion").setFontSize(12);
 		 

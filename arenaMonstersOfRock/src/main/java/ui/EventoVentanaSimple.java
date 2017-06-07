@@ -144,12 +144,13 @@ public class EventoVentanaSimple extends MainWindow<Evento> {
 
 	private void agregarBandaSelectionWindow() {
 		Presentacion nuevaP = new Presentacion(); 
-		//esta cosa horrible del disco lo hice para que compile
-		nuevaP.setDisco(new Disco("nothing", 0, StoreBandas.getInstance().getBandas().get(0), null));
 		BandaSelectionWindow windowB = new BandaSelectionWindow(this, nuevaP);
 		windowB.onAccept(() -> {
 			this.getModelObject().agregarPresentacion(nuevaP);
 			ObservableUtils.firePropertyChanged(this.getModelObject(), "presentaciones");
+			ObservableUtils.firePropertyChanged(this.getModelObject(), "tiempoTotalPresentaciones");
+			ObservableUtils.firePropertyChanged(this.getModelObject(), "gastos");
+			ObservableUtils.firePropertyChanged(this.getModelObject(), "ingresoAsegurado");
 		});
 		windowB.open();
 	}

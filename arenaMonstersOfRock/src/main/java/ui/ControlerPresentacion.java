@@ -1,5 +1,8 @@
 package ui;
 
+import java.util.List;
+
+import org.uqbar.commons.model.ObservableUtils;
 import org.uqbar.commons.utils.Observable;
 
 import Dominio.Banda;
@@ -13,17 +16,23 @@ public class ControlerPresentacion {
 	private Presentacion presentacion;
 	private Banda banda = StoreBandas.getInstance().getBandas().get(0);
 	
+
 	public ControlerPresentacion(Presentacion p){
 		super();
 		this.setPresentacion(p);
 	}
 
+	public List<Disco> getDiscosBandaActual(){
+		return this.getBanda().getDiscos();
+	}
+	
 	public Banda getBanda() {
 		return banda;
 	}
 
 	public void setBanda(Banda banda) {
 		this.banda = banda;
+		ObservableUtils.firePropertyChanged(this, "discosBandaActual");
 	}
 
 	public Presentacion getPresentacion() {
