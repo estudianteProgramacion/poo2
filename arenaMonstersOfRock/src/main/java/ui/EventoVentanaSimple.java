@@ -96,9 +96,18 @@ public class EventoVentanaSimple extends MainWindow<Evento> {
 	private void construirBarraDeAcciones(Panel mainPanel) {
 		
 		ControlerBandasEvento controlerBandas = new ControlerBandasEvento(this.getModelObject());
-
+		
+		//Un panelsito para visor para que quede arriba del Numeric Field
+		Panel visor = new Panel(mainPanel, controlerBandas);
+	
+		Label visorText = new Label(visor);
+		visorText.bindValueToProperty("text");
+		
 		Panel botones = new Panel(mainPanel,controlerBandas);
+		
+			
 		botones.setLayout(new HorizontalLayout());
+		
 		
 		new Label(botones).setText("Nro. Fila Banda");
 
@@ -130,29 +139,52 @@ public class EventoVentanaSimple extends MainWindow<Evento> {
 			);
 		
 		new Button(botones)
+		.setCaption("editar")
+		.onClick( () -> {
+				 this.editarBandaSelectionWindow(controlerBandas.getBandaActual());
+				}
+		);
+		
+		new Button(botones)
 		.setCaption("borrar")
 		.onClick( () -> {
 				 this.getModelObject().quitarBanda(controlerBandas.getBandaActual());
 				}
 		);
 		
-		Label visor = new Label(botones);
-		visor.bindValueToProperty("text");
+
 	}
 	
 
 
+	private void editarBandaSelectionWindow(Banda bandaActual) {
+		Presentacion actualP = this.getModelObject().presentacionDeBanda(bandaActual);
+		Presentacion editPClone = new Presentacion(actualP.getMinutos(),actualP.getDisco());
+		BandaSelectionWindow windowB = new BandaSelectionWindow(this, editPClone);
+		windowB.onAccept(() -> {
+			this.getModelObject().reemplazarPresentacion(editPClone, actualP);
+			this.actualizarDescripcion();
+		});
+		windowB.open();
+		
+	}
+
+	
 	private void agregarBandaSelectionWindow() {
 		Presentacion nuevaP = new Presentacion(); 
 		BandaSelectionWindow windowB = new BandaSelectionWindow(this, nuevaP);
 		windowB.onAccept(() -> {
 			this.getModelObject().agregarPresentacion(nuevaP);
-			ObservableUtils.firePropertyChanged(this.getModelObject(), "presentaciones");
-			ObservableUtils.firePropertyChanged(this.getModelObject(), "tiempoTotalPresentaciones");
-			ObservableUtils.firePropertyChanged(this.getModelObject(), "gastos");
-			ObservableUtils.firePropertyChanged(this.getModelObject(), "ingresoAsegurado");
+			this.actualizarDescripcion();
+
 		});
 		windowB.open();
 	}
 
+	private void actualizarDescripcion() {
+		ObservableUtils.firePropertyChanged(this.getModelObject(), "presentaciones");
+		ObservableUtils.firePropertyChanged(this.getModelObject(), "tiempoTotalPresentaciones");
+		ObservableUtils.firePropertyChanged(this.getModelObject(), "gastos");
+		ObservableUtils.firePropertyChanged(this.getModelObject(), "ingresoAsegurado");		
+	}
 }

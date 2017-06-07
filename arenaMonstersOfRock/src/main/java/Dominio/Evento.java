@@ -40,7 +40,8 @@ public abstract class Evento {
 		}
 	}
 	
-	private Presentacion presentacionDeBanda(Banda b) {
+	//Solo si se que tengo esa banda
+	public Presentacion presentacionDeBanda(Banda b) {
 		return this.getPresentaciones().stream()
 				.filter(p -> p.getBanda().equals(b))
 				.collect(Collectors.toList())
@@ -187,10 +188,17 @@ public abstract class Evento {
 		this.nombre = nombre;
 	}
 
-	
+	public void reemplazarPresentacion(Presentacion editPClone, Presentacion vieja) {
+		int index = this.getPresentaciones().indexOf(vieja);
+		this.getPresentaciones().remove(vieja);
+		this.getPresentaciones().add(index, editPClone);
+		
+	}
 	//NO USAR SOLO POR QUE ME SALIO EN ARENA
 	public void setPresentaciones(List<Presentacion> listP){
 		this.presentaciones = listP;
 	}
+
+	
 
 }
