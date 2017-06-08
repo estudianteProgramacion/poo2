@@ -15,7 +15,7 @@ public class ControlerPresentacion {
 
 	private Presentacion presentacion;
 	private Banda banda = StoreBandas.getInstance().getBandas().get(0);
-	
+	private boolean visible = false;
 
 	public ControlerPresentacion(Presentacion p){
 		super();
@@ -33,6 +33,11 @@ public class ControlerPresentacion {
 	public void setBanda(Banda banda) {
 		this.banda = banda;
 		ObservableUtils.firePropertyChanged(this, "discosBandaActual");
+		this.visibleOn();
+	}
+
+	private void visibleOn() {
+		this.setVisible(true);
 	}
 
 	public Presentacion getPresentacion() {
@@ -57,6 +62,14 @@ public class ControlerPresentacion {
 
 	public void setDisco(Disco disco) {
 		this.presentacion.setDisco(disco);
+	}
+
+	public boolean isVisible() {
+		return visible;
+	}
+
+	public void setVisible(boolean visible) {
+		this.visible = visible;
 	}
 
 }

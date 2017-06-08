@@ -55,6 +55,7 @@ public class BandaSelectionWindow extends Dialog<Presentacion> {
 				.bindItems(new ObservableProperty<>(controlPresentacion, "discosBandaActual"))
 				.setAdapter(new PropertyAdapter(Disco.class, "nombre"));
 		selectorDeDiscos.bindValueToProperty("disco");
+		selectorDeDiscos.bindVisibleToProperty("visible");
 		
 		
 		new Label(mainPanel).setText("Tiempo de presentacion").setFontSize(12);
