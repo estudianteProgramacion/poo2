@@ -172,9 +172,14 @@ public class EventoVentanaSimple extends MainWindow<Evento> {
 		Presentacion nuevaP = new Presentacion(); 
 		BandaSelectionWindow windowB = new BandaSelectionWindow(this, nuevaP);
 		windowB.onAccept(() -> {
-			this.getModelObject().agregarPresentacion(nuevaP);
+			try {
+				this.getModelObject().agregarPresentacion(nuevaP);
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+				//e.printStackTrace();
+				new VentanaDeError(this,e).open();
+			}
 			this.actualizarDescripcion();
-
 		});
 		windowB.open();
 	}

@@ -23,9 +23,11 @@ public class Discografica implements Organizador {
 	
 	//methods
 		@Override
-	public boolean puedeHacerPresentacionEnEvento( Presentacion p) {
-		return p.getBanda().ultimoDisco().getProductor().equals(this)
-				|| p.getDisco().getProductor().equals(this);
+	public boolean puedeHacerPresentacionEnEvento( Presentacion p)  {
+		if (p.getBanda().ultimoDisco().getProductor().equals(this)
+				|| p.getDisco().getProductor().equals(this)){ return true;} else {
+					throw new RuntimeException("El Organizador Discografica no permite agregar la Presentacion a evento ");
+				}
 	}
 	
 	public Collection<Disco> getDiscosProducidos() {

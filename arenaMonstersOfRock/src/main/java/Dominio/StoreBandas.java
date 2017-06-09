@@ -26,18 +26,20 @@ public class StoreBandas {
 	private void configurarBandas() {
 		Discografica elf = new Discografica("elf");
 		Discografica vamp = new Discografica("vamp");
+		Discografica uruDisc = new Discografica("uruDisc");
 				
 		Disco flashpoint = new Disco("flashPoint",1991, this.getBanda("stones"), elf);
-//		Disco pepe = new Disco("pepe", 1950, this.getBanda("stones"), elf);
 		Disco noche = new Disco("noche",2002, this.getBanda("bandana"), elf);
-//		Disco theEnd = new Disco(2017, stones, vamp);
-//		Disco angelitos = new Disco(2000, angels, elf);
+		Disco publico = new Disco("publico",2012, this.getBanda("noTeVaAGustar"), uruDisc);
+		Disco porLoMenos = new Disco("porLoMenos",2010, this.getBanda("noTeVaAGustar"), elf);
+
 		
-		CantDiscosPais argFlashPoint = new CantDiscosPais(StorePaises.getInstance().getPais("argentina"), 2000);
+		CantDiscosPais argFlashPoint = new CantDiscosPais(StorePaises.getInstance().getPais("argentina"), 10000);
 		CantDiscosPais argNoche = new CantDiscosPais(StorePaises.getInstance().getPais("argentina"), 150);
 		CantDiscosPais uruFlashPoint = new CantDiscosPais(StorePaises.getInstance().getPais("uruguay") , 1000);
 		CantDiscosPais uruNoche = new CantDiscosPais(StorePaises.getInstance().getPais("uruguay"), 200);
 		CantDiscosPais eeuuAngelitos = new CantDiscosPais(StorePaises.getInstance().getPais("eeuu"), 5000);
+		CantDiscosPais uruPublico = new CantDiscosPais(StorePaises.getInstance().getPais("uruguay"), 2000);
 		
 		flashpoint.agregarPais(argFlashPoint);
 		flashpoint.agregarPais(uruFlashPoint);
@@ -45,8 +47,10 @@ public class StoreBandas {
 		
 		
 //		this.getBanda("stones").agregarDisco(pepe);
+		this.getBanda("noTeVaAGustar").agregarDisco(porLoMenos);
 		this.getBanda("stones").agregarDisco(flashpoint);
 		this.getBanda("bandana").agregarDisco(noche);
+		this.getBanda("noTeVaAGustar").agregarDisco(publico);
 	}
 
 
@@ -60,7 +64,7 @@ public class StoreBandas {
 		this.getBandas().add( new Banda("stones",10000.0, "rock", eeuu));
 		this.getBandas().add( new Banda("bandana",1000.0, "rock", argentina));
 		this.getBandas().add( new Banda("angels",500.0, "pop", eeuu));
-		this.getBandas().add( new Banda("noTeVaAGustar",5000.0, "pop", uruguay));
+		this.getBandas().add( new Banda("noTeVaAGustar",5000.0, "reagge", uruguay));
 		
 	}
 

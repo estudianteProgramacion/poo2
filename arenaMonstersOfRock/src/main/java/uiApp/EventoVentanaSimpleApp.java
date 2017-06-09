@@ -18,7 +18,7 @@ import ui.EventoVentanaSimple;
 
 public class EventoVentanaSimpleApp {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		Discografica elf = new Discografica("elf");
 		Discografica vamp = new Discografica("vamp");
 		
@@ -75,6 +75,8 @@ public class EventoVentanaSimpleApp {
 			e3.agregarSede(pp);
 			e3.agregarGeneroAdmitido("pop");
 			e3.agregarGeneroAdmitido("rock");
+			//PRIVISORIO
+			e3.agregarGeneroAdmitido("reagge");
 			
 		e1.agregarPresentacion(presBandanaNoche);	
 		e2.agregarPresentacion(presBandanaNoche);

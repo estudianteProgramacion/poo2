@@ -9,15 +9,16 @@ import org.uqbar.arena.widgets.NumericField;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.WindowOwner;
-import org.uqbar.commons.model.ObservableUtils;
-import org.uqbar.commons.utils.Observable;
 
 import Dominio.Banda;
 import Dominio.Disco;
 import Dominio.Pais;
 import Dominio.Presentacion;
 import Dominio.StoreBandas;
-import Dominio.StorePaises;
+import uiProp.ButtonC;
+import uiProp.LabelH3;
+import uiProp.NumericFieldMonsters;
+import uiProp.PropMonsters;
 
 public class BandaSelectionWindow extends Dialog<Presentacion> {
 	/**
@@ -40,7 +41,7 @@ public class BandaSelectionWindow extends Dialog<Presentacion> {
 		
 		Panel mainPanel = new Panel(mainPane, controlPresentacion);
 		
-		new Label(mainPanel).setText("Seleccione una Banda");
+		new LabelH3(mainPanel, PropMonsters.color1).setText("Seleccione una Banda");
 		
 		List<Pais> selectorDeBanda = new List<Pais>(mainPanel);
 			selectorDeBanda
@@ -48,7 +49,7 @@ public class BandaSelectionWindow extends Dialog<Presentacion> {
 				.setAdapter(new PropertyAdapter(Banda.class, "nombre"));
 		selectorDeBanda.bindValueToProperty("banda");
 		
-		new Label(mainPanel).setText("seleccione Disco");
+		new LabelH3(mainPanel, PropMonsters.color1).setText("seleccione Disco");
 				
 		List<Disco> selectorDeDiscos = new List<Disco>(mainPanel);
 		selectorDeDiscos
@@ -58,15 +59,15 @@ public class BandaSelectionWindow extends Dialog<Presentacion> {
 		selectorDeDiscos.bindVisibleToProperty("visible");
 		
 		
-		new Label(mainPanel).setText("Tiempo de presentacion").setFontSize(12);
+		new LabelH3(mainPanel, PropMonsters.color1).setText("Tiempo de presentacion").setFontSize(12);
 		 
-		new NumericField(mainPanel).bindValueToProperty("minutos"); 
+		new NumericFieldMonsters(mainPanel).bindValueToProperty("minutos"); 
 		
-		Button acceptButton = new Button(mainPanel);
+		Button acceptButton = new ButtonC(mainPanel);
 		acceptButton.setCaption("Aceptar");
 		acceptButton.onClick(() ->  this.accept());
 
-		Button cancelButton = new Button(mainPanel);
+		Button cancelButton = new ButtonC(mainPanel);
 		cancelButton.setCaption("Cancelar");
 		cancelButton.onClick(() -> this.cancel());
 		

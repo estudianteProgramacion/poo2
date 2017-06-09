@@ -7,4 +7,3 @@ public interface Organizador {
 	boolean puedeHacerPresentacionEnEvento(Presentacion p);
 	
 }
-	

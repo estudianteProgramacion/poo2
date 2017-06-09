@@ -28,23 +28,32 @@ public class Festival extends Evento {
 	
 	
 	@Override
-	public boolean sePuedeAgregar(Presentacion p) {
+	public boolean sePuedeAgregar(Presentacion p)  {
 		return this.getOrganizador().puedeHacerPresentacionEnEvento(p)
 				&& this.estaEnGenerosAdmitidos(p)
 				&& this.noSupueraTiempo(p)
 				&& this.tieneMenosDiscosQuePrincipal(p);
 	}
 
-	private boolean tieneMenosDiscosQuePrincipal(Presentacion p) {
-		return !this.hayPresentaciones() || (p.getBanda().copiasVendidas() < this.bandaPrincipal().copiasVendidas());
+	private boolean tieneMenosDiscosQuePrincipal(Presentacion p){
+		if (!this.hayPresentaciones() || (p.getBanda().copiasVendidas() < this.bandaPrincipal().copiasVendidas())){
+		return true;} else {
+			throw new RuntimeException("Esta Banda tiene mas discos que la principal, tiene que tener " ); //+ this.bandaPrincipal().copiasVendidas()
+		}
 	}
 
 	private boolean estaEnGenerosAdmitidos(Presentacion p) {
-		return this.getGenerosAdmitidos().contains( p.getBanda().getGeneroMusical() );
+		if (this.getGenerosAdmitidos().contains( p.getBanda().getGeneroMusical() )){
+		return true;} else {
+			throw new RuntimeException("El genero " + p.getBanda().getGeneroMusical() + " no esta en los generos admitidos ");
+		}
 	}
 
-	private boolean noSupueraTiempo(Presentacion p) {
-		return (this.getTiempoTotalPresentaciones() + p.getMinutos()) <= tiempoMax;
+	private boolean noSupueraTiempo(Presentacion p){
+		if ((this.getTiempoTotalPresentaciones() + p.getMinutos()) <= tiempoMax){
+		return true;} else {
+			throw new RuntimeException("Agregando esta presentacion superaria el tiempo Maximo ");
+		}
 	}
 
 	@Override

@@ -17,9 +17,10 @@ public class CenaShow extends Evento {
 	}
 
 	@Override
-	public boolean sePuedeAgregar(Presentacion p) {
+	public boolean sePuedeAgregar(Presentacion p)  {
 		return this.getOrganizador().puedeHacerPresentacionEnEvento(p)
 				&& !this.hayPresentaciones();
+		//TODO exception cuando no hay prensentacion
 	}
 
 	@Override

@@ -100,15 +100,13 @@ public abstract class Evento {
 			s.agregarEvento(this);
 		} else {
 			System.out.println("No se puede agregar esta sede");
+			throw new RuntimeException("no se puede agregar esta sede");
 		}
 	}
 	
-	public void agregarPresentacion(Presentacion p){
-		if ( this.sePuedeAgregar(p)){
-			this.getPresentaciones().add(p);
-		} else {
-			System.out.println("No se puede agregar esta presentacion al evento");
-		}
+	public void agregarPresentacion(Presentacion p) {
+		this.sePuedeAgregar(p);
+		this.getPresentaciones().add(p);
 	}
 	
 	public boolean esEconomicamenteFactible(){

@@ -20,11 +20,12 @@ public class Recital extends Evento {
 	}
 
 	@Override
-	public boolean sePuedeAgregar(Presentacion p) {
+	public boolean sePuedeAgregar(Presentacion p){
 		return this.BandaTieneUnTercioDeLaPrincipal(p)
 				&& !this.superaLimiteDeBandas()
 				&& this.getOrganizador().puedeHacerPresentacionEnEvento(p)
 				;
+		//TODO exception de los primeros dos
 	}
 
 	private boolean superaLimiteDeBandas() {

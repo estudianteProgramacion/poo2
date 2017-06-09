@@ -15,8 +15,11 @@ public class Ciudad implements Organizador {
 	
 
 	@Override
-	public boolean puedeHacerPresentacionEnEvento(Presentacion p) {
-		return p.getBanda().getPais().equals(this.getPais());
+	public boolean puedeHacerPresentacionEnEvento(Presentacion p){
+		if(p.getBanda().getPais().equals(this.getPais())) {return true;} 
+		else {
+			throw new RuntimeException("El Organiazdor ciudad no permite hacer esta presentacion ");
+		}
 	}
 	
 	@Override
