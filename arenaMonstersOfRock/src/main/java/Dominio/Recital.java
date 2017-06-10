@@ -22,20 +22,26 @@ public class Recital extends Evento {
 	@Override
 	public boolean sePuedeAgregar(Presentacion p){
 		return this.BandaTieneUnTercioDeLaPrincipal(p)
-				&& !this.superaLimiteDeBandas()
+				&& this.noSuperaLimiteDeBandas()
 				&& this.getOrganizador().puedeHacerPresentacionEnEvento(p)
 				;
-		//TODO exception de los primeros dos
 	}
 
-	private boolean superaLimiteDeBandas() {
-		return this.getBandas().size() > 4;
+	//le tube que poner el no adelante por el tema de negar la exception
+	private boolean noSuperaLimiteDeBandas() {
+		if (this.getBandas().size() <= 4){
+		return true;} else {
+			throw new RuntimeException("No se puede agregar supera e limite de bandas");
+		}
 	}
 
 	private boolean BandaTieneUnTercioDeLaPrincipal(Presentacion p) {
-		return !this.hayPresentaciones() 
+		if(!this.hayPresentaciones() 
 				|| ((p.getBanda().copiasVendidas() < this.bandaPrincipal().copiasVendidas() * 3)
-				&& p.getBanda().getGeneroMusical().equals(this.bandaPrincipal().getGeneroMusical()));
+				&& p.getBanda().getGeneroMusical().equals(this.bandaPrincipal().getGeneroMusical()))){
+			return true;} else {
+				throw new RuntimeException("La Banda tiene mas de un tercio de copias vendeidas que la banda principal");
+			}
 	}
 
 	@Override

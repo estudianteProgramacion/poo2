@@ -32,25 +32,27 @@ public class StoreBandas {
 		Disco noche = new Disco("noche",2002, this.getBanda("bandana"), elf);
 		Disco publico = new Disco("publico",2012, this.getBanda("noTeVaAGustar"), uruDisc);
 		Disco porLoMenos = new Disco("porLoMenos",2010, this.getBanda("noTeVaAGustar"), elf);
+		Disco genero = new Disco("genero", 2015, this.getBanda("generacion"), elf);
 
 		
 		CantDiscosPais argFlashPoint = new CantDiscosPais(StorePaises.getInstance().getPais("argentina"), 10000);
 		CantDiscosPais argNoche = new CantDiscosPais(StorePaises.getInstance().getPais("argentina"), 150);
 		CantDiscosPais uruFlashPoint = new CantDiscosPais(StorePaises.getInstance().getPais("uruguay") , 1000);
 		CantDiscosPais uruNoche = new CantDiscosPais(StorePaises.getInstance().getPais("uruguay"), 200);
-		CantDiscosPais eeuuAngelitos = new CantDiscosPais(StorePaises.getInstance().getPais("eeuu"), 5000);
+//		CantDiscosPais eeuuAngelitos = new CantDiscosPais(StorePaises.getInstance().getPais("eeuu"), 5000);
 		CantDiscosPais uruPublico = new CantDiscosPais(StorePaises.getInstance().getPais("uruguay"), 2000);
 		
 		flashpoint.agregarPais(argFlashPoint);
 		flashpoint.agregarPais(uruFlashPoint);
 		noche.agregarPais(uruNoche);
+		porLoMenos.agregarPais(uruPublico);
 		
 		
-//		this.getBanda("stones").agregarDisco(pepe);
 		this.getBanda("noTeVaAGustar").agregarDisco(porLoMenos);
 		this.getBanda("stones").agregarDisco(flashpoint);
 		this.getBanda("bandana").agregarDisco(noche);
 		this.getBanda("noTeVaAGustar").agregarDisco(publico);
+		this.getBanda("generacion").agregarDisco(genero);
 	}
 
 
@@ -65,6 +67,7 @@ public class StoreBandas {
 		this.getBandas().add( new Banda("bandana",1000.0, "rock", argentina));
 		this.getBandas().add( new Banda("angels",500.0, "pop", eeuu));
 		this.getBandas().add( new Banda("noTeVaAGustar",5000.0, "reagge", uruguay));
+		this.getBandas().add(new Banda("generacion", 7000.0, "punk", argentina));
 		
 	}
 

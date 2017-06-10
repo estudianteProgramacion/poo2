@@ -29,6 +29,7 @@ public class Festival extends Evento {
 	
 	@Override
 	public boolean sePuedeAgregar(Presentacion p)  {
+		//Hay un problema que solo muestro el primero de los errores, deberia hacer algo que me vaya guardando los strings y siga validando 
 		return this.getOrganizador().puedeHacerPresentacionEnEvento(p)
 				&& this.estaEnGenerosAdmitidos(p)
 				&& this.noSupueraTiempo(p)
