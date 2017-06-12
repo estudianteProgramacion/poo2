@@ -4,22 +4,17 @@ import java.awt.Color;
 
 import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.layout.HorizontalLayout;
-import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.NumericField;
 import org.uqbar.arena.widgets.Panel;
-import org.uqbar.arena.widgets.style.Style;
 import org.uqbar.arena.widgets.tables.Column;
 import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.MainWindow;
 import org.uqbar.commons.model.ObservableUtils;
 
 import Dominio.Banda;
-import Dominio.Disco;
 import Dominio.Evento;
 import Dominio.Presentacion;
-import Dominio.StoreBandas;
-import Dominio.StorePaises;
 import uiProp.ButtonC;
 import uiProp.Espaciado;
 import uiProp.LabelH1;

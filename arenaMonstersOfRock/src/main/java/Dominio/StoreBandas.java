@@ -30,33 +30,41 @@ public class StoreBandas {
 				
 		Disco flashpoint = new Disco("flashPoint",1991, this.getBanda("stones"), elf);
 		Disco noche = new Disco("noche",2002, this.getBanda("bandana"), elf);
+		Disco mierdas = new Disco("mierdas", 2001, this.getBanda("bandana"), vamp);
 		Disco publico = new Disco("publico",2012, this.getBanda("noTeVaAGustar"), uruDisc);
 		Disco porLoMenos = new Disco("porLoMenos",2010, this.getBanda("noTeVaAGustar"), elf);
 		Disco genero = new Disco("genero", 2015, this.getBanda("generacion"), elf);
+		Disco angelitos = new Disco("angelitos",2000, this.getBanda("angels"), elf);
 
 		
 		CantDiscosPais argFlashPoint = new CantDiscosPais(StorePaises.getInstance().getPais("argentina"), 10000);
 		CantDiscosPais argNoche = new CantDiscosPais(StorePaises.getInstance().getPais("argentina"), 150);
 		CantDiscosPais uruFlashPoint = new CantDiscosPais(StorePaises.getInstance().getPais("uruguay") , 1000);
 		CantDiscosPais uruNoche = new CantDiscosPais(StorePaises.getInstance().getPais("uruguay"), 200);
-//		CantDiscosPais eeuuAngelitos = new CantDiscosPais(StorePaises.getInstance().getPais("eeuu"), 5000);
+		CantDiscosPais eeuuMierdas = new CantDiscosPais(StorePaises.getInstance().getPais("eeuu"), 50);
 		CantDiscosPais uruPublico = new CantDiscosPais(StorePaises.getInstance().getPais("uruguay"), 2000);
+		CantDiscosPais eeuuAngelitos = new CantDiscosPais(StorePaises.getInstance().getPais("eeuu"), 5000);
+
 		
 		flashpoint.agregarPais(argFlashPoint);
 		flashpoint.agregarPais(uruFlashPoint);
 		noche.agregarPais(uruNoche);
+		noche.agregarPais(argNoche);
+		mierdas.agregarPais(eeuuMierdas);
 		porLoMenos.agregarPais(uruPublico);
+		angelitos.agregarPais(eeuuAngelitos);
 		
-		
+		this.getBanda("angels").agregarDisco(angelitos);
 		this.getBanda("noTeVaAGustar").agregarDisco(porLoMenos);
 		this.getBanda("stones").agregarDisco(flashpoint);
 		this.getBanda("bandana").agregarDisco(noche);
+		this.getBanda("bandana").agregarDisco(mierdas);
 		this.getBanda("noTeVaAGustar").agregarDisco(publico);
 		this.getBanda("generacion").agregarDisco(genero);
 	}
 
 
-	public void ponerBandas() throws Exception {
+	public void ponerBandas(){
 		
 		Pais eeuu = StorePaises.getInstance().getPais("eeuu");
 		Pais argentina = StorePaises.getInstance().getPais("argentina");

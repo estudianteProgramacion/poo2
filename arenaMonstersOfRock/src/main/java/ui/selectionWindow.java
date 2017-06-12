@@ -3,9 +3,7 @@ package ui;
 import org.uqbar.arena.bindings.ObservableProperty;
 import org.uqbar.arena.bindings.PropertyAdapter;
 import org.uqbar.arena.widgets.Button;
-import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.List;
-import org.uqbar.arena.widgets.NumericField;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.WindowOwner;
@@ -13,6 +11,10 @@ import org.uqbar.arena.windows.WindowOwner;
 import Dominio.CantDiscosPais;
 import Dominio.Pais;
 import Dominio.StorePaises;
+import uiProp.ButtonC;
+import uiProp.LabelH3;
+import uiProp.NumericFieldMonsters;
+import uiProp.PropMonsters;
 
 public class selectionWindow extends Dialog<CantDiscosPais> {
 
@@ -27,9 +29,9 @@ public class selectionWindow extends Dialog<CantDiscosPais> {
 	
 	@Override
 	protected void createFormPanel(Panel mainPanel) {
-		this.setTitle("agregue Cantidad y Pais");
+		this.setTitle("Cantidad y Pais");
 			
-		new Label(mainPanel).setText("Seleccione un Pais").setFontSize(12);
+		new LabelH3(mainPanel, PropMonsters.color1).setText("Seleccione un Pais");
 		
 
 		List<Pais> selectorDePais = new List<Pais>(mainPanel);
@@ -40,15 +42,15 @@ public class selectionWindow extends Dialog<CantDiscosPais> {
 		selectorDePais.setWidth(220);
 		selectorDePais.setHeight(80);
 			
-		new Label(mainPanel).setText("Seleccione cantidad").setFontSize(12);
+		new LabelH3(mainPanel, PropMonsters.color1).setText("Seleccione cantidad");
 		 
-		new NumericField(mainPanel).bindValueToProperty("cantDiscosVendidos"); 
+		new NumericFieldMonsters(mainPanel).bindValueToProperty("cantDiscosVendidos"); 
 		
-		Button acceptButton = new Button(mainPanel);
+		Button acceptButton = new ButtonC(mainPanel);
 		acceptButton.setCaption("Aceptar");
 		acceptButton.onClick(() -> this.accept());
 
-		Button cancelButton = new Button(mainPanel);
+		Button cancelButton = new ButtonC(mainPanel);
 		cancelButton.setCaption("Cancelar");
 		cancelButton.onClick(() -> this.cancel());
 		

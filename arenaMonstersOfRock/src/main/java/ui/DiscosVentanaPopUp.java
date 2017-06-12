@@ -5,8 +5,6 @@ import java.awt.Color;
 import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.layout.HorizontalLayout;
 import org.uqbar.arena.widgets.Button;
-import org.uqbar.arena.widgets.Label;
-import org.uqbar.arena.widgets.NumericField;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.tables.Column;
 import org.uqbar.arena.widgets.tables.Table;
@@ -41,12 +39,6 @@ public class DiscosVentanaPopUp extends Window<Disco> {
 	public void createContents(Panel mainPanel) {
 
 		this.setTitle("Disco");
-		
-		//TODO IMAGENES VER
-//		 Label imageLabel = new Label(mainPanel);
-//				 imageLabel.bindImageToProperty(", null
-//				     
-//				    );
 		
 		Panel desc = new Panel(mainPanel);
 		desc.setLayout(new ColumnLayout(2));
