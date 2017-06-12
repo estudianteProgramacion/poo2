@@ -46,19 +46,6 @@ public class StorePaises {
 		return this.getPaises().get(0);
 	}
 
-//	public Pais getPaisNombre(String nPais) throws Exception{
-//		if (estaPaisNombre(nPais)){
-//				 this.getPais(nPais);
-//			} else {
-//				throw new Exception("el nombre de pais " + nPais + " no esta en el Store");
-//			}
-//		return null;	
-//	}
-
-//	public boolean estaPaisNombre(String nPais) {
-//		return this.getPaises().stream().anyMatch(p -> p.getName().equals(nPais));
-//	}
-
 	public Pais getPais(String nPais) {
 		int indexPais = this.getPaises().stream()
 						.map(p -> p.getName())

@@ -20,7 +20,6 @@ public class Pais {
 	
 	//methods
 	
-//  nada esto por las dudas. PREGUNTAR POR QUE ESTO TIENE CAST HORRIBLEEE
 	@Override
 	public boolean equals(Object p){
 		return this.getName().equals(((Pais) p).getName());

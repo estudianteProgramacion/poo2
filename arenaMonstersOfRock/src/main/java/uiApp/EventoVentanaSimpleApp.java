@@ -43,6 +43,7 @@ public class EventoVentanaSimpleApp {
 			e3.agregarGeneroAdmitido("reagge");
 			
 
+			//Aca se cambia entre los 3 eventos
 		EventoVentanaSimple window = new EventoVentanaSimple(e1);
 		window.startApplication();
 	}
